@@ -1,0 +1,25 @@
+{
+  "name": "gcp-sitemap",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build:server && nodemon dist/test.js",
+    "build:server": "tsc --project tsconfig.server.json",
+    "after-build": "copyfiles package.json dist",
+    "build": "npm run build:server && npm run after-build",
+    "deploy": "npm run build && cd dist && gcloud functions deploy updateSitemap --env-vars-file ../.env.yaml --runtime nodejs8 --trigger-http"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/debug-agent": "^3.2.0",
+    "@google-cloud/storage": "^2.5.0",
+    "dotenv": "^8.0.0",
+    "sitemap": "^2.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
