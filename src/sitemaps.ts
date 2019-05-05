@@ -48,7 +48,7 @@ function putSiteMapToGCP(fileName: string, sitemap: string, res?: any): void {
       keyFilename: path.join(__dirname, "../credentials.json")
     });
   } else {
-    storage = storage = new Storage();
+    storage = new Storage();
   }
   const bucket = storage.bucket(process.env.BUCKET_NAME);
   const rs = new Readable();

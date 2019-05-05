@@ -101,7 +101,7 @@ function putSiteMapToGCP(fileName, sitemap, res) {
         });
     }
     else {
-        storage = storage = new storage_1.Storage();
+        storage = new storage_1.Storage();
     }
     var bucket = storage.bucket(process.env.BUCKET_NAME);
     var rs = new stream_1.Readable();
